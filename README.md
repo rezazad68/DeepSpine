@@ -9,10 +9,10 @@ Automatic labeling of the vertebral disc is a difficult task, due to the many ch
 ## Material and method
 
 ### Dataset
-In this work we use the publickly availble spinal cord dataset (Cohen-Adad, 2019). The dataset contains both MRI T1w and T2W modalies for 251 subjects, which acuired from 40 different centers. The dataset contains high variablity in term of quality, ratio and structure. We follow the litreture wok and extract the average of 6 middle slide from each subject data (either T1W or Tw2) as a 2D image for the training purpose. Each image are then pre-processed using sample-wise normalization. Furthermore, We extract single pixel per vertebral disc as a ground truth mask using the manually annotated data provided by Ivadomed library. 
+In this work, we use the publicly available spinal cord dataset ([Cohen-Adad, 2019](https://github.com/spine-generic/data-multi-subject#spine-generic-public-database-multi-subject)). The dataset contains both MRI T1w and T2W modalities for 251 subjects, which acquired from 40 different centers. The dataset contains high variability in terms of quality, ratio, and structure. We follow the literature work ([Rouhier, 2019](https://arxiv.org/pdf/2003.04387.pdf)) and extract the average of 6 middle slides from each subject data (either T1W or Tw2) as a 2D image for the training purpose. Each image is then pre-processed using sample-wise normalization. Furthermore, We extract a single pixel per vertebral disc as a ground truth mask using the manually annotated data provided by the [Ivadomed library](https://ivadomed.org/en/latest/). 
 
 ### Data augmentation
-We only use the fliping as a data augmentation method. Since the model requires each vertebral disc location in different channel, we use the morphological approach to seperate the disc. On top of the seperated disc we apply the guassian kerne with sigma n to generate a smooth annotation (similar to Rouhier, 2019). sample of data along with its annotation is shown in the bellow figure.  
+We only use the fliping as a data augmentation method. Since the model requires each vertebral disc location in different channel, we use the morphological approach to seperate the disc. On top of the seperated disc we apply the guassian kerne with sigma n to generate a smooth annotation (similar to [Rouhier, 2019](https://arxiv.org/pdf/2003.04387.pdf)). sample of data along with its annotation is shown in the bellow figure.  
 
 ![Diagram of the proposed method](https://github.com/rezazad68/DeepSpine/blob/main/images/proposed%20method.png)
 

@@ -4,7 +4,7 @@
 ## Introduction
 Automatic labeling of the vertebral disc is a difficult task, due to the many challenges such as complex background, the similarity between discs and bone area in MRI imaging, blurry image, and variation in an imaging modality. Precisely localizing spinal discs plays an important role in vertebral disc labeling. Most of the literature work consider the semantic vertebral disc labeling as a post-processing step, which applies on the top of the disc localization algorithm. Hence, the semantic vertebral labeling highly depends on the disc localization algorithm and mostly fails when the localization algorithm cannot detect discs or falsely detects a background area as a disc. In this work, we aim to mitigate this problem by reformulating the semantic disc labeling using the pose estimation technique. To do so, we propose a stacked hourglass network with a multi-level attention mechanism to estimate the vertebral disc location in the MRI images. The proposed deep model takes into account the strength of semantic segmentation and pose estimation technique to handle the missing and falsely additional disc areas. The skeleton structure of the proposed method is shown in the figure below:
 
-![Skeleton](https://github.com/rezazad68/DeepSpine/blob/main/images/skeleton2.png)
+![Skeleton](https://github.com/rezazad68/DeepSpine/blob/main/images/skeleton3.png)
 
 ## Material and method
 

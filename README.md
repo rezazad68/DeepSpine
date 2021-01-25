@@ -12,13 +12,21 @@ Automatic labeling of the vertebral disc is a difficult task, due to the many ch
 In this work, we use the publicly available spinal cord dataset ([Cohen-Adad, 2019](https://github.com/spine-generic/data-multi-subject#spine-generic-public-database-multi-subject)). The dataset contains both MRI T1w and T2W modalities for 251 subjects, which acquired from 40 different centers. The dataset contains high variability in terms of quality, ratio, and structure. We follow the literature work ([Rouhier, 2019](https://arxiv.org/pdf/2003.04387.pdf)) and extract the average of 6 middle slides from each subject data (either T1W or Tw2) as a 2D image for the training purpose. Each image is then pre-processed using sample-wise normalization. Furthermore, We extract a single pixel per vertebral disc as a ground truth mask using the manually annotated data provided by the [Ivadomed library](https://ivadomed.org/en/latest/). 
 
 ### Data augmentation
-We only use the fliping as a data augmentation method. Since the model requires each vertebral disc location in different channel, we use the morphological approach to seperate the disc. On top of the seperated disc we apply the guassian kerne with sigma n to generate a smooth annotation (similar to [Rouhier, 2019](https://arxiv.org/pdf/2003.04387.pdf)). sample of data along with its annotation is shown in the bellow figure.  
-
-![Diagram of the proposed method](https://github.com/rezazad68/DeepSpine/blob/main/images/proposed%20method.png)
+We only use the fliping as a data augmentation method. Since the model requires each vertebral disc location in a different channel, we use the morphological approach to separate the vertebral disc location on the ground truth heatmap. On top of the separated discs we apply the gaussian kerne with sigma n to generate a smooth annotation (similar to [Rouhier, 2019](https://arxiv.org/pdf/2003.04387.pdf)).
 
 ### Training process
-We train the model for 200 epochs usign 80% of the dataset. At the end of each eopoch we evaluate the model on the validation set (10% of the dataset). The training convergence gif is showing below, which represent the estimated vertebral disc locations at the end of each eopoch for the validation set. As it is clear the model is able to successfuly recoginze the vertebral disc location with precise order at the later epochs. Please read the run demo section to get a guide to run the code and limitation section to find out issues and challenges that we need to overcome. 
+We train the model for 200 epochs using 80% of the dataset. At the end of each epoch, we evaluate the model on the validation set (10% of the dataset). The training process uses the sum of MSE loss between the ground truth discs heatmap and all intermediate and final prediction results. The training convergence gif is showing below, which represents the estimated vertebral disc locations at the end of each epoch for the validation set. As it is clear the model is able to successfully recognize the vertebral disc location with precise order at the later epochs. Please read the run demo section to get a guide to run the code and limitation section to find out issues and challenges that we need to overcome.
 
+![learning convergence](https://github.com/rezazad68/DeepSpine/blob/main/images/Learning%20convergence.gif)
+
+### Baseline model
+In this work we use the stacked hourglass network as a baseline model. The hourglass network (figure below) is an encoder-decoder network, which uses a symmetric structure on encoder and decoder section.  Similar to the U-net model it uses the residual information for enhancing the representation. However, on the transition path, it applies a series of convolution layers to compactly represent the information. The stacked hourglass network consists of N times repeating the hourglass network and successively connecting these networks together.
+
+![Diagram of the proposed method](https://github.com/rezazad68/DeepSpine/blob/main/images/stackedhourglass.png)
+
+
+
+![Diagram of the proposed method](https://github.com/rezazad68/DeepSpine/blob/main/images/proposed%20method.png)
 
 ## Prerequisties and Run
 This code has been implemented in python language using Pytorch libarary and tested in ubuntu, though should be compatible with related environment. The required libraries are included in the requiremetns.txt file. Please follow the bellow steps to train and evaluate the model. 

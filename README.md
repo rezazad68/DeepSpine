@@ -32,21 +32,21 @@ The stacked hourglass network learns the object pose using (N-1) intermediate pr
 ## Prerequisties and Run
 This code has been implemented in python language using Pytorch libarary and tested in ubuntu, though should be compatible with related environment. The required libraries are included in the requiremetns.txt file. Please follow the bellow steps to train and evaluate the model. </br>
 
-1- Download the [Spine Generic Public Database (Multi-Subject)](https://github.com/spine-generic/data-multi-subject#spine-generic-public-database-multi-subject).
-2- Run the `create_dataset.py` to gather the required data from the Spin Generic dataset. 
-3- Optinonall at the moment (run the `generate_straightened.bash`) to generate the straightened images using the [spinal cord toolbox](https://spinalcordtoolbox.com/en/stable/index.html) library. 
-4- Run `prepare_trainset.py` to creat the training and validation samples. 
+1- Download the [Spine Generic Public Database (Multi-Subject)](https://github.com/spine-generic/data-multi-subject#spine-generic-public-database-multi-subject).</br>
+2- Run the `create_dataset.py` to gather the required data from the Spin Generic dataset. </br>
+3- Optinonall at the moment (run the `generate_straightened.bash`) to generate the straightened images using the [spinal cord toolbox](https://spinalcordtoolbox.com/en/stable/index.html) library. </br>
+4- Run `prepare_trainset.py` to creat the training and validation samples. </br>
 Notice: To avoid the above steps we have provided the processed data [here]() you can simply download it and continue with the rest steps. 
-5- Run the `main.py` to train and evaluate the model. Use the following command with the related arguments to perform the required action:
+5- Run the `main.py` to train and evaluate the model. Use the following command with the related arguments to perform the required action:</br>
 
-
-
-
-
-
-
+A- Train and evaluate the model `python src/main.py`. You can use `--att true` to use the attention mechanisim. </br>
+B- Evaluate the model `python src/main.py --evaluate true ` it will load the trained model and evalute it on the validation set. </br>
+C- You can change the number of stacked hourglass by `--stacks ` argument. 
 
 #### Visualzie the attention channel
+
+To extract and show the attention channel for the related input sample, we registered the attention channel by the forward hook. Thus with the following command, you can visualize the input sample, estimated vertebral disc location, and the attention channel. </br>
+`python src/main.py --evaluate true --attshow true `. </br>
 
 ![Attention visualization](https://github.com/rezazad68/DeepSpine/blob/main/images/attention_visualization.png)
 

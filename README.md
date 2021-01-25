@@ -30,28 +30,25 @@ The stacked hourglass network learns the object pose using (N-1) intermediate pr
 ![Diagram of the proposed method](https://github.com/rezazad68/DeepSpine/blob/main/images/proposed%20method.png)
 
 ## Prerequisties and Run
-This code has been implemented in python language using Pytorch libarary and tested in ubuntu, though should be compatible with related environment. The required libraries are included in the requiremetns.txt file. Please follow the bellow steps to train and evaluate the model. 
+This code has been implemented in python language using Pytorch libarary and tested in ubuntu, though should be compatible with related environment. The required libraries are included in the requiremetns.txt file. Please follow the bellow steps to train and evaluate the model. </br>
+
 1- Download the [Spine Generic Public Database (Multi-Subject)](https://github.com/spine-generic/data-multi-subject#spine-generic-public-database-multi-subject).
 2- Run the `create_dataset.py` to gather the required data from the Spin Generic dataset. 
-3- Optinonall at the moment (run the `generate_straightened.bash`) to generate the straightened images using the [SCT]() library. 
+3- Optinonall at the moment (run the `generate_straightened.bash`) to generate the straightened images using the [spinal cord toolbox](https://spinalcordtoolbox.com/en/stable/index.html) library. 
 4- Run `prepare_trainset.py` to creat the training and validation samples. 
 Notice: To avoid the above steps we have provided the processed data [here]() you can simply download it and continue with the rest steps. 
-5- 
-
-1- Download the ISIC 2018 train dataset from [this](https://challenge.kitware.com/#phase/5abcb19a56357d0139260e53) link and extract both training dataset and ground truth folders inside the `dataset_isic18`. </br>
-2- Run `Prepare_ISIC2018.py` for data preperation and dividing data to train,validation and test sets. </br>
-3- Run `train_isic18.py` for training BCDU-Net model using trainng and validation sets. The model will be train for 100 epochs and it will save the best weights for the valiation set. You can also train U-net model for this dataset by changing model to unet, however, the performance will be low comparing to BCDU-Net. </br>
-4- For performance calculation and producing segmentation result, run `evaluate.py`. It will represent performance measures and will saves related figures and results in `output` folder.</br>
+5- Run the `main.py` to train and evaluate the model. Use the following command with the related arguments to perform the required action:
 
 
 
 
-The structure of the proposed method is shown in the below figure.  
 
 
-#### Sample resutl
 
-![Skin Lesion Segmentation result 1](https://github.com/rezazad68/LSTM-U-net/blob/master/output_images/1%20(1).png)
+
+#### Visualzie the attention channel
+
+![Attention visualization](https://github.com/rezazad68/DeepSpine/blob/main/images/attention_visualization.png)
 
 
 ## Limitaion and issues: 

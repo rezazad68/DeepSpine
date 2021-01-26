@@ -74,7 +74,7 @@ The rest of the data is considered as test set. As we can see there are large va
 2- In the current implementation I have not used the straightening strategy, does straightening can solve the above-mentioned problem? In the case of straightening which data from the figure 9 should be used as data and annotation? </br>
 
 ![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/straigthening.png)
-##### <pre>                                            Fig. 9. spin generic files for each subject </pre>
+##### <pre>                                            Fig. 9. spine generic files for each subject </pre>
 
 3- What should I add as a data agumentation method? </br>
 

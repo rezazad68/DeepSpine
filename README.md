@@ -85,3 +85,5 @@ The rest of the data is considered as test set. As we can see there are large va
 2- Add the evaluation metrics </br>
 3- Compare the resutls with the litreature work </br>
 4- Enhance the implementation </br>
+5- Read and use the local maxima idea https://github.com/bmartacho/UniPose
+

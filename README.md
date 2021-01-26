@@ -51,12 +51,22 @@ To extract and show the attention channel for the related input sample, we regis
 ![Attention visualization](https://github.com/rezazad68/DeepSpine/blob/main/images/attention_visualization.png)
 
 
-## Limitaion and issues: 
+### Limitaion and issues: 
 
 
-## To do
+![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_train.png)
+
+![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_val.png)
+
+![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_test.png)
+
+#### Issues to handle
 
 
-
+### To do
+Fidx the issues
+Add the evaluation metrics
+Compare the resutls with the litreature work
+Enhance the implementation
 
 ```

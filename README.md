@@ -62,9 +62,11 @@ The rest of the data is considered as test set. As we can see there are large va
 #### Issues to handle
 1- How should I devide the dataset into train, validation and test set to handle the above mentioned problem? In fact the data variablity comes from the center variation and training a model with small dataset and different structured data can largely reduce the performance. </br>
 
-2- In the current impplementation I have not used the straightening strategy, does straightening can solve the above mentioned problem? In case of straighten which data from the below figure should be use as a data and annotation? </br>
+2- In the current implementation I have not used the straightening strategy, does straightening can solve the above-mentioned problem? In the case of straightening which data from the below figure should be used as data and annotation? </br>
 
-3- 
+![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/straigthening.png)
+
+3- What should I add as a data agumentation method? </br>
 
 ### To do
 1- Fidx the issues </br>

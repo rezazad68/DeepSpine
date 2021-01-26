@@ -68,6 +68,8 @@ The rest of the data is considered as test set. As we can see there are large va
 
 3- What should I add as a data agumentation method? </br>
 
+4- What would you suggest as a additional loss? </br>
+
 ### To do
 1- Fidx the issues </br>
 2- Add the evaluation metrics </br>

@@ -52,21 +52,18 @@ To extract and show the attention channel for the related input sample, we regis
 
 
 ### Limitaion and issues: 
-
-
+We srot the spin generic dataset and choose the first 80% as a train set. Figure, bellow shows the sample of extracted images for the training purpose. 
 ![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_train.png)
-
+10% of the dataset is also considered as a validation set. 
 ![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_val.png)
-
+The rest of the data is considered as test set. As we can see there are large variation between the train/validation and test sets. Thus, the models performance on test set is not good. 
 ![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_test.png)
 
 #### Issues to handle
 
 
 ### To do
-Fidx the issues
-Add the evaluation metrics
-Compare the resutls with the litreature work
-Enhance the implementation
-
-```
+Fidx the issues </br>
+Add the evaluation metrics </br>
+Compare the resutls with the litreature work </br>
+Enhance the implementation </br>

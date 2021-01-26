@@ -67,7 +67,7 @@ The rest of the data is considered as test set. As we can see there are large va
 3- 
 
 ### To do
-Fidx the issues </br>
-Add the evaluation metrics </br>
-Compare the resutls with the litreature work </br>
-Enhance the implementation </br>
+1- Fidx the issues </br>
+2- Add the evaluation metrics </br>
+3- Compare the resutls with the litreature work </br>
+4- Enhance the implementation </br>

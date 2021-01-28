@@ -7,6 +7,12 @@ Automatic labeling of the vertebral disc is a difficult task, due to the many ch
 ![Skeleton](https://github.com/rezazad68/DeepSpine/blob/main/images/skeleton3.png)
 ##### <pre>                                            Fig. 1. Skeleton structure of the vertebral discs</pre>
 
+### Updates
+
+1-28-2021: Generalization issue solved, now model works fine on the test set
+1-25-2021: initial version of the implementation is out now
+
+
 ## Material and method
 
 ### Dataset
@@ -16,7 +22,7 @@ In this work, we use the publicly available spinal cord dataset ([Cohen-Adad, 20
 We only use the fliping as a data augmentation method. Since the model requires each vertebral disc location in a different channel, we use the morphological approach to separate the vertebral disc location on the ground truth heatmap. On top of the separated discs we apply the gaussian kerne with sigma n to generate a smooth annotation (similar to [Rouhier, 2019](https://arxiv.org/pdf/2003.04387.pdf)).
 
 ### Training process
-We train the model for 200 epochs using 80% of the dataset. At the end of each epoch, we evaluate the model on the validation set (10% of the dataset). The training process uses the sum of MSE loss between the ground truth discs heatmap and all intermediate and final prediction results. The training convergence gif is showing in figure 2, which represents the estimated vertebral disc locations at the end of each epoch for the validation set. As it is clear the model is able to successfully recognize the vertebral disc location with precise order at the later epochs. Please read the run demo section to get a guide to run the code and limitation section to find out issues and challenges that we need to overcome.
+We train the model for 200 epochs using 80% of the dataset. At the end of each epoch, we evaluate the model on the validation set (10% of the dataset). The training process uses the sum of MSE loss between the ground truth discs heatmap and all intermediate and final prediction results. The training convergence gif is showing in figure 2, which represents the estimated vertebral disc locations at the end of each epoch for the validation set. As it is clear the model is able to successfully recognize the vertebral disc location with precise order at the later epochs. Please read the run demo section to get a guide to run the code.
 
 ![learning convergence](https://github.com/rezazad68/DeepSpine/blob/main/images/Learning%20convergence.gif)
 ##### <pre>                                            Fig. 2. Learning convergence for prediction </pre>
@@ -56,32 +62,8 @@ To extract and show the attention channel for the related input sample, we regis
 ![Attention visualization](https://github.com/rezazad68/DeepSpine/blob/main/images/attention_visualization.png)
 ##### <pre>                                            Fig. 5. Attention mechanisim visualization </pre>
 
-### Limitaion and issues: 
-We srot the spin generic dataset and choose the first 80% as a train set. Figure 6 shows the sample of extracted images for the training purpose. 
-![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_train.png)
-##### <pre>                                            Fig. 6. Training samples </pre>
-
-10% of the dataset is also considered as a validation set. 
-![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_val.png)
-##### <pre>                                            Fig. 7. Validation samples </pre>
-The rest of the data is considered as test set. As we can see there are large variation between the train/validation and test sets. Thus, the models performance on test set is not good. 
-![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/data_test.png)
-##### <pre>                                            Fig. 8. Test samples </pre>
-
-#### Issues to handle
-1- How should I devide the dataset into train, validation and test set to handle the above mentioned problem? In fact the data variablity comes from the center variation and training a model with small dataset and different structured data can largely reduce the performance. </br>
-
-2- In the current implementation I have not used the straightening strategy, does straightening can solve the above-mentioned problem? In the case of straightening which data from the figure 9 should be used as data and annotation? </br>
-
-![Train data](https://github.com/rezazad68/DeepSpine/blob/main/images/straigthening.png)
-##### <pre>                                            Fig. 9. spine generic files for each subject </pre>
-
-3- What should I add as a data agumentation method? </br>
-
-4- What would you suggest as a additional loss? </br>
-
 ### To do
-1- Fidx the issues </br>
+1- Fidx the issues (done) </br>
 2- Add the evaluation metrics </br>
 3- Compare the resutls with the litreature work </br>
 4- Enhance the implementation </br>

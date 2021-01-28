@@ -9,7 +9,7 @@ Automatic labeling of the vertebral disc is a difficult task, due to the many ch
 
 ### Updates
 
-1-28-2021: Generalization issue solved, now model works fine on the test set
+1-28-2021: Generalization issue solved, now model works fine on the test set. </br>
 1-25-2021: initial version of the implementation is out now
 
 

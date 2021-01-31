@@ -67,5 +67,5 @@ To extract and show the attention channel for the related input sample, we regis
 2- Add the evaluation metrics </br>
 3- Compare the resutls with the litreature work </br>
 4- Enhance the implementation </br>
-5- Read and use the local maxima idea https://github.com/bmartacho/UniPose
+5- Write the paper
 

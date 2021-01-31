@@ -62,6 +62,13 @@ To extract and show the attention channel for the related input sample, we regis
 ![Attention visualization](https://github.com/rezazad68/DeepSpine/blob/main/images/attention_visualization.png)
 ##### <pre>                                            Fig. 5. Attention mechanisim visualization </pre>
 
+
+#### Sample of detection result on the test set
+Below we illustrated a sample of vertebral disc detection on the test set. 
+
+![Test sample](https://github.com/rezazad68/DeepSpine/blob/main/images/test_result1.png)
+##### <pre>                                            Fig. 6. Sample of test results </pre>
+
 ### To do
 1- Fidx the issues (done) </br>
 2- Add the evaluation metrics </br>

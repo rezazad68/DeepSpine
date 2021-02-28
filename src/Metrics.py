@@ -43,9 +43,9 @@ def Faux_pos(gt, pred, tot):
         #print(gt)
         if (abs(node[0] - gt[h][0])) > 10:
             c = c + 1
-            #print(node)
-            #print(gt[h])
+
         elif h in already_used:
+
             #print(gt[h])
             #print('already_used')
             c = c + 1

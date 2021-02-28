@@ -7,7 +7,7 @@ from __future__ import print_function, absolute_import
 import os
 import argparse
 import time
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "9"
 import torch
 import torch.nn.parallel
 import torch.backends.cudnn as cudnn
@@ -24,6 +24,18 @@ from pose_code.utils import *
 from train_utils import *
 from torch.utils.data import DataLoader 
 import copy
+import random 
+
+## Set seed
+seed = 42
+os.environ['PYTHONHASHSEED'] = str(seed)
+# Torch RNG
+torch.manual_seed(seed)
+torch.cuda.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+# Python RNG
+np.random.seed(seed)
+random.seed(seed)
 
 # init global variables
 best_acc = 0
@@ -89,18 +101,18 @@ def main(args):
     if args.resume:
        print("=> loading checkpoint to continue learing process")
        if args.att:
-            model.load_state_dict(torch.load('./final_code/weight_model_att', map_location='cpu')['model_weights'])
+            model.load_state_dict(torch.load(f'./weights/model_{args.modality}_att_{args.stacks}', map_location='cpu')['model_weights'])
        else:
-            model.load_state_dict(torch.load('./final_code/weight_model', map_location='cpu')['model_weights'])
+            model.load_state_dict(torch.load(f'./weights/model_{args.modality}__{args.stacks}', map_location='cpu')['model_weights'])
 
     # evaluation only
     if args.evaluate:
         print('\nEvaluation only')
         print('loading the pretrained weight')
         if args.att:
-            model.load_state_dict(torch.load('./final_code/weight_model_att', map_location='cpu')['model_weights'])
+            model.load_state_dict(torch.load(f'./weights/model_{args.modality}_att_{args.stacks}', map_location='cpu')['model_weights'])
         else:
-            model.load_state_dict(torch.load('./final_code/weight_model', map_location='cpu')['model_weights'])
+            model.load_state_dict(torch.load(f'./weights/model_{args.modality}_{args.stacks}', map_location='cpu')['model_weights'])
 
         if args.attshow:
             loss, acc = show_attention(MRI_val_loader, model)
@@ -129,9 +141,9 @@ def main(args):
         if valid_acc > best_acc:
            state = copy.deepcopy({'model_weights': model.state_dict()})
            if args.att:
-                torch.save(state, './final_code/weight_model_att')
+                torch.save(state, f'./weights/model_{args.modality}_att_{args.stacks}')
            else:
-                torch.save(state, './final_code/weight_model')
+                torch.save(state, f'./weights/model_{args.modality}_{args.stacks}')
            best_acc = valid_acc
                 
 
@@ -274,23 +286,27 @@ def show_attention(val_loader, model):
                 layer.register_forward_hook(save_output)
                 break
     # switch to evaluate mode
+    N = 1
+    Sel= 0
     model.eval()
     with torch.no_grad():
         for i, (input, target, vis) in enumerate(val_loader):
-            input  = input[0:1]
-            target = target[0:1]
-            input  = input.to(device, non_blocking=True)
-            target = target.to(device, non_blocking=True)
-            output = model(input)
-            att = save_output.outputs[0][0,0]
-            output = output[-1]
-            save_attention(input, output, target, att, target_th=0.5)
+            if i==Sel:
+               input  = input [N:N+1]
+               target = target[N:N+1]
+               input  = input.to(device, non_blocking=True)
+               target = target.to(device, non_blocking=True)
+               output = model(input)
+               att = save_output.outputs[0][0,0]
+               output = output[-1]
+               save_attention(input, output, target, att, target_th=0.6)
+            
     return 0, 0         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Verterbal disc labeling using pose estimation')
     
     ## Parameters
-    parser.add_argument('--datapath', default='./final_code/prepared_dataset', type=str,
+    parser.add_argument('--datapath', default='./prepared_data/prepared_trainset_t1', type=str,
                         help='Dataset address')                     
     parser.add_argument('--njoints', default=11, type=int,
                         help='Number of joints')
@@ -298,9 +314,11 @@ if __name__ == '__main__':
                         help=' Resume the training from the last checkpoint')  
     parser.add_argument('--attshow', default= False, type=bool,
                         help=' Show the attention map') 
-    parser.add_argument('--epochs', default=200, type=int, metavar='N',
+    parser.add_argument('--epochs', default=120, type=int, metavar='N',
                         help='number of total epochs to run')
-    parser.add_argument('--train_batch', default=3, type=int, metavar='N',
+    parser.add_argument('--modality', default='t1', type=str, metavar='N',
+                        help='Data modality')
+    parser.add_argument('--train_batch', default=3, type=int, metavar='N', 
                         help='train batchsize')
     parser.add_argument('--val_batch', default=4, type=int, metavar='N',
                         help='validation batchsize')
@@ -319,7 +337,7 @@ if __name__ == '__main__':
                         help='LR is multiplied by gamma on schedule.')
     parser.add_argument('-e', '--evaluate', default=False, type=bool,
                         help='evaluate model on validation set')
-    parser.add_argument('--att', default=True, type=bool,
+    parser.add_argument('--att', default=True, type=bool, 
                         help='Use attention or not')
     parser.add_argument('-s', '--stacks', default=2, type=int, metavar='N',
                         help='Number of hourglasses to stack')

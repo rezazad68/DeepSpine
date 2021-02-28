@@ -22,7 +22,7 @@ In this work, we use the publicly available spinal cord dataset ([Cohen-Adad, 20
 We only use the fliping as a data augmentation method. Since the model requires each vertebral disc location in a different channel, we use the morphological approach to separate the vertebral disc location on the ground truth heatmap. On top of the separated discs we apply the gaussian kerne with sigma n to generate a smooth annotation (similar to [Rouhier, 2019](https://arxiv.org/pdf/2003.04387.pdf)).
 
 ### Training process
-We train the model for 200 epochs using 80% of the dataset. At the end of each epoch, we evaluate the model on the validation set (10% of the dataset). The training process uses the sum of MSE loss between the ground truth discs heatmap and all intermediate and final prediction results. The training convergence gif is showing in figure 2, which represents the estimated vertebral disc locations at the end of each epoch for the validation set. As it is clear the model is able to successfully recognize the vertebral disc location with precise order at the later epochs. Please read the run demo section to get a guide to run the code.
+We train the model for 200 epochs using 75% of the dataset as a train set. At the end of each epoch, we evaluate the model on the validation set (10% of the dataset). The training process uses the sum of MSE loss between the ground truth discs heatmap and all intermediate and final prediction results. The training convergence gif is showing in figure 2, which represents the estimated vertebral disc locations at the end of each epoch for the validation set. As it is clear the model is able to successfully recognize the intervertebral disc location with precise order at the later epochs. Please read the run demo section to get a guide to run the code.
 
 ![learning convergence](https://github.com/rezazad68/DeepSpine/blob/main/images/Learning%20convergence.gif)
 ##### <pre>                                            Fig. 2. Learning convergence for prediction </pre>
@@ -69,10 +69,16 @@ Below we illustrated a sample of vertebral disc detection on the test set.
 ![Test sample](https://github.com/rezazad68/DeepSpine/blob/main/images/test_result1.png)
 ##### <pre>                                            Fig. 6. Sample of test results </pre>
 
-### To do
-1- Fidx the issues (done) </br>
-2- Add the evaluation metrics </br>
-3- Compare the resutls with the litreature work </br>
-4- Enhance the implementation </br>
-5- Write the paper
+### Model weights
+You can download the learned weights for each modality in the following table. 
+
+Method | Modality |Learned weights
+------------ | -------------|----
+Proposed model without attention | T1w | x
+Proposed model without attention | T2w | x
+Proposed model with    attention | T1w | x
+Proposed model with    attention | T2w | x
+
+
+
 

@@ -74,10 +74,10 @@ You can download the learned weights for each modality in the following table.
 
 Method | Modality |Learned weights
 ------------ | -------------|----
-Proposed model without attention | T1w | x
-Proposed model without attention | T2w | x
-Proposed model with    attention | T1w | x
-Proposed model with    attention | T2w | x
+Proposed model without attention | T1w | download (https://drive.google.com/file/d/102U8NlSIelkEmSu4J-Qw-djKsKi6dudt/view?usp=sharing)
+Proposed model without attention | T2w | download (https://drive.google.com/file/d/1pzGDRwFSWb6FN3o8GZD2xrH3gNcPjImt/view?usp=sharing)
+Proposed model with    attention | T1w | download (https://drive.google.com/file/d/1o5DWzHlhMDic5eynrEQMupjZwsmCr5XP/view?usp=sharin)
+Proposed model with    attention | T2w | download (https://drive.google.com/file/d/1zvBbiCVH1gnrYUbzVF6JAUpcpQg7I2dn/view?usp=sharing)
 
 
 

@@ -40,9 +40,9 @@ The stacked hourglass network learns the object pose using (N-1) intermediate pr
 ##### <pre>                         Fig. 4. Stacked hourglass network with multi-level attention mechanisim </pre>
 
 ### Post-processing
-Model prediction often contains noisy area which needs to be eliminated. To do so, we create a skeleton structure from the trainin set then for each new subject we build a search tree based on prediciton masks. In the search tree, the path with minimum distance to the skeleton structure selects as a final prediciton. Figure 5 shows the skeleton and search tree.  
+Model prediction often contains noisy area which needs to be eliminated. To do so, we create a skeleton structure from the trainin set then for each new subject we build a search tree based on prediciton masks. In the search tree, the path with minimum distance to the skeleton structure selects as a final prediciton. Figure 5 shows the skeleton structure extracted from the training set.  
 
-![Diagram of the proposed method](https://github.com/rezazad68/DeepSpine/blob/main/images/tree.png)
+![Diagram of the proposed method](https://github.com/rezazad68/DeepSpine/blob/main/images/skeleton_distribution.png)
 ##### <pre>                         Fig. 5. Skeleton structure and search tree to recover intervertebral disc location on predicted masks </pre>
 
 

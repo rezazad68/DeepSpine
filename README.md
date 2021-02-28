@@ -59,7 +59,7 @@ D- You can change the number of stacked hourglass by `--stacks ` argument. For m
 To extract and show the attention channel for the related input sample, we registered the attention channel by the forward hook. Thus with the following command, you can visualize the input sample, estimated vertebral disc location, and the attention channel. </br>
 `python src/main.py --evaluate true --attshow true `. </br>
 
-![Attention visualization](https://github.com/rezazad68/DeepSpine/blob/main/images/attention_visualization.png)
+![Attention visualization](https://github.com/rezazad68/DeepSpine/blob/main/images/attention_visualizationnew.png)
 ##### <pre>                                            Fig. 5. Attention mechanisim visualization </pre>
 
 
